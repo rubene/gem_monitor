@@ -1,28 +1,32 @@
 # GemMonitor
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/gem_monitor`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Crosscheck projects gem versions against rubygems.org latest versions and creates a report.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-```ruby
-gem 'gem_monitor'
+```
+group :development
+  gem 'gem_monitor'
+end
 ```
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
-Or install it yourself as:
+Initialize the `gem_monitor` directory with:
 
-    $ gem install gem_monitor
+    rails generate gem_monitor:install
 
 ## Usage
 
-TODO: Write usage instructions here
+run:
+
+    bin/rake gem_monitor:run
+
+open up gem_monitor/index.html in your browser and check out what gems are outdated.
 
 ## Development
 
@@ -38,4 +42,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
