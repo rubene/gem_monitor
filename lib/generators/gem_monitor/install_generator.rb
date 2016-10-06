@@ -18,7 +18,7 @@ module GemMonitor
         gitignore_content = "./gem_monitor"
         gitignore_file_path = File.join(".gitignore")
         if File.exist? gitignore_file_path
-          gitignore_file_content = GemMonitor::Reader.read gitignore_file_path
+          gitignore_file_content = GemMonitor::Reader.new(file_path: gitignore_file_path).read
           if gitignore_file_content.include? gitignore_content
             puts "Report files are already added to the gitignore file"
           else

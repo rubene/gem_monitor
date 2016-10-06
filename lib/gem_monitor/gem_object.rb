@@ -3,7 +3,7 @@ module GemMonitor
 
     attr_accessor :name, :project_version, :latest_version
 
-    LATEST_VERSION_ERRORS = ["unknown", "0.0.0"]
+    LATEST_VERSION_ERRORS = ["unknown"]
 
     def latest_version
       @latest_version ||= get_gem_latest_version
@@ -12,14 +12,17 @@ module GemMonitor
     def initialize(args = {})
       self.name = args.fetch(:name, "")
       self.project_version = args.fetch(:project_version, "")
-      latest_version
-      self.latest_version = output_latest_version
     end
 
-    # decorator methods
-    def output_class
+    # TODO: maybe move this to a decorator but debating into
+    #       adding another run dependency.
+    def output_html_class
       return "red" if latest_version_error?
       project_version < latest_version ? "red" : "green"
+    end
+
+    def output_project_version
+      project_version.empty? ? project_version_error_message : project_version
     end
 
     def output_latest_version
@@ -34,7 +37,11 @@ module GemMonitor
     end
 
     def latest_version_error_message
-      "Something went wrong checking latest version for #{name} gem"
+      "Something went wrong checking the latest version for #{name} gem"
+    end
+
+    def project_version_error_message
+      "Something went wrong finding the project version for #{name} gem"
     end
 
     def get_gem_latest_version

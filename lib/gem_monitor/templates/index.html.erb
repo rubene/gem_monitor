@@ -21,7 +21,7 @@
       <div class="top-bar-title"><b>GemMonitor Report</b></div>
       <div>
         <div class="top-bar-left"></div>
-        <div class="top-bar-right"></div>
+        <div class="top-bar-right"><%= Date.today.to_s %></div>
       </div>
     </div>
     <div class="row">
@@ -33,14 +33,14 @@
             <div class="small-4 medium-4 large-4 columns"><b>Latest Version</b></div>
           </div>
           <ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
-            <% if @results %>
-              <% @results.each do |result| %>
+            <% if @project_gems %>
+              <% @project_gems.each do |project_gem| %>
                 <li class="accordion-item" data-accordion-item>
-                  <a href="#" class="accordion-title <%= result.output_class %>">
+                  <a href="#" class="accordion-title <%= project_gem.output_html_class %>">
                     <div class="row">
-                      <div class="small-4 medium-4 large-4 columns"><b><%= result.name %></b></div>
-                      <div class="small-4 medium-4 large-4 columns"><b><%= result.project_version %></b></div>
-                      <div class="small-4 medium-4 large-4 columns"><b><%= result.latest_version %></b></div>
+                      <div class="small-4 medium-4 large-4 columns"><b><%= project_gem.name %></b></div>
+                      <div class="small-4 medium-4 large-4 columns"><b><%= project_gem.output_project_version %></b></div>
+                      <div class="small-4 medium-4 large-4 columns"><b><%= project_gem.output_latest_version %></b></div>
                     </div>
                   </a>
                   <div class="accordion-content" data-tab-content>
