@@ -1,4 +1,4 @@
-# GemMonitor
+# GemMonitor ![alt text](https://travis-ci.org/rubene/gem_monitor.png?branch=master "")
 
 Crosscheck projects gem versions against rubygems.org latest versions and creates a report.
 
