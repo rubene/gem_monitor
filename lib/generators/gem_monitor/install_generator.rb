@@ -15,7 +15,7 @@ module GemMonitor
       end
 
       def add_files_to_gitignore
-        gitignore_content = "./gem_monitor"
+        gitignore_content = "/gem_monitor/"
         gitignore_file_path = File.join(".gitignore")
         if File.exist? gitignore_file_path
           gitignore_file_content = GemMonitor::Reader.new(file_path: gitignore_file_path).read
